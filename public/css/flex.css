@@ -1,0 +1,163 @@
+.b_s {
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex_1 {
+    flex: 1;
+}
+
+.flex_2 {
+    flex: 2;
+}
+
+.flex_3 {
+    flex: 3;
+}
+
+.flex_4 {
+    flex: 4;
+}
+
+.flex_5 {
+    flex: 5;
+}
+
+.flex_6 {
+    flex: 6;
+}
+
+.flex_7 {
+    flex: 7;
+}
+
+.flex_8 {
+    flex: 8;
+}
+
+.row {
+    flex-direction: row;
+    /*横排 |----|*/
+}
+
+.col {
+    flex-direction: column;
+    /*纵排|=|*/
+}
+
+.row_re {
+    flex-direction: row-reverse;
+    /*横排-从右往左|----  |*/
+}
+
+.col_re {
+    flex-direction: column-reverse;
+    /*纵排-从下往上|   ----|*/
+}
+
+.j_center {
+    justify-content: center;
+    /*水平居中|-|*/
+}
+
+.j_start {
+    justify-content: flex-start;
+    /*靠左对齐|-- |*/
+}
+
+.j_end {
+    justify-content: flex-end;
+    /*靠右对齐| --|*/
+}
+
+.j_between {
+    justify-content: space-between;
+    /*等距排列 |1 1 1 1|*/
+}
+
+.a_center {
+    align-items: center;
+    /*垂直居中 |  -  |*/
+}
+
+.a_start {
+    align-items: flex-start;
+    /*顶部对齐 |```|*/
+}
+
+.a_end {
+    align-items: flex-end;
+    /*底部对齐|___|*/
+}
+
+.worp {
+    flex-wrap: wrap;
+    /*换行，第一排在上方，从上往下*/
+}
+
+.noworp {
+    flex-wrap: nowrap;
+}
+
+
+/*不换行*/
+
+.worp_reverse {
+    flex-wrap: wrap-reverse;
+    /*换行,第一排在下方,从下往上*/
+}
+
+.text_all_center {
+    /*文字垂直且水平居中*/
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+}
+
+.text_height_center {
+    /*文字垂直居中*/
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+}
+
+.text_height_line_center {
+    /*文字垂直居中*/
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.text_center {
+    text-align: center;
+}
+
+
+/*文字水平居中*/
+
+.text_left {
+    text-align: left;
+}
+
+
+/*文字左侧对齐*/
+
+.text_right {
+    text-align: right;
+}
+
+
+/*文字右侧对齐*/
+
+.po_r {
+    position: relative;
+}
+
+.po_b {
+    position: absolute;
+}

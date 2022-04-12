@@ -1,0 +1,494 @@
+@charset "utf-8";
+
+/*公共样式*/
+
+html,
+body {
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-size: 16px;
+}
+
+.views {
+    color: #333;
+    padding: 0 20px;
+}
+
+.po_bottom {
+    bottom: 0;
+    left: 0;
+}
+
+
+/*列表*/
+
+.list_content {
+    width: 100%;
+}
+
+.list_header {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #262626;
+    background-color: #FAFAFA;
+}
+
+.list_header li {
+    font-size: 15px;
+}
+
+.list_main>li {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+    color: #262626;
+}
+
+.list_main>li ol {
+    height: 50px;
+}
+
+.list_bg {
+    background-color: #FCFCFC;
+}
+
+.list_main>li ol li {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: #595959;
+    font-size: 15px;
+}
+
+.list_main>li.single {
+    background-color: #F1F8FF;
+}
+
+.list_main>li.double {
+    background-color: #fff;
+}
+
+.page_footer {
+    padding: 14px 0.2rem;
+}
+
+
+/*按钮*/
+
+.edit_button {
+    color: #007DF2 !important;
+}
+
+.small_edit_button {
+    display: inline-block;
+    width: 70px;
+    height: 26px;
+    line-height: 26px;
+    background: #409EFF;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+
+/*常用颜色开始*/
+
+.mr_color01 {
+    background-color: #F4F9FF;
+}
+
+.bg_color01 {
+    background-color: #eee;
+}
+
+.bg_color02 {
+    background-color: yellow;
+}
+
+.bg_color03 {
+    background-color: green;
+}
+
+.bg_color04 {
+    background-color: blue;
+}
+
+.bg_color05 {
+    background-color: blueviolet;
+}
+
+.bg_color06 {
+    background-color: pink;
+}
+
+.bg_color07 {
+    background-color: cadetblue;
+}
+
+.bg_color08 {
+    background-color: orange;
+}
+
+.color01 {
+    color: #007DF2 !important;
+}
+
+
+/*常用颜色结束*/
+
+.b_line {
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+.all_line {
+    border: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+.refresh {
+    width: 80px;
+    padding-left: 36px;
+    height: 30px;
+    line-height: 30px;
+    background: url(../../src/assets/images/load/refresh.png) no-repeat left 12px center /14px;
+}
+
+.circle {
+    width: 0.24rem;
+    height: 0.24rem;
+    border-radius: 50%;
+    background: red;
+}
+
+.margin_bottom {
+    margin-bottom: 0.32rem;
+}
+
+.h_bottom {
+    height: calc(100vh - 0.64rem);
+    background-color: #F4F9FF;
+}
+
+.views_100ch_1 {
+    height: calc(100vh - 90px);
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.views_100ch_2 {
+    height: calc(100vh - 1.94rem - 60px);
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.inp {
+    width: 2.56rem;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+/*查询、重置按钮开始*/
+
+.header_set_btn {
+    width: 80px;
+    height: 100%;
+    line-height: 30px !important;
+    border-radius: 4px;
+}
+
+.header_set_btn01 {
+    background-color: #007DF2;
+    color: #fff;
+}
+
+.header_set_btn02 {
+    color: #595959;
+}
+
+
+/*查询、重置按钮结束*/
+
+
+/*刷新，返回开始*/
+
+.refresh {
+    right: 0rem;
+    top: 50%;
+    margin-top: -15px;
+}
+
+.return_to {
+    right: calc(80px + 0.1rem);
+    background-image: url(../../src/assets/images/left_arrow01.png);
+}
+
+
+/*刷新，返回结束*/
+
+
+/*from表单开始*/
+
+.from_box {
+    width: 100%;
+    box-shadow: 0px 2px 6px 0px rgba(207, 228, 255, 0.4);
+    background-color: #fff;
+    border-radius: 0.1rem;
+    padding-bottom: 0.2rem;
+}
+
+.from_tltle {
+    height: 50px;
+    line-height: 50px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    padding: 0 0.3rem;
+    font-size: 16px;
+    color: #262626;
+}
+
+.from_item_title {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #262626;
+    font-size: 14px;
+}
+
+.from_textarea_240px textarea {
+    height: 240px;
+}
+
+.from_textarea_120px textarea {
+    height: 120px;
+}
+
+.creat_box_time {
+    width: 100% !important;
+}
+
+.inp_box .el-input--small .el-input__inner {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+
+/*from表单结束*/
+
+.el-range-separator {
+    line-height: 24px !important;
+}
+
+
+/*搜索开始*/
+
+.header_item .w_25,
+.header_item .w_50,
+.header_item .w_200px {
+    /*padding: 12px 0;*/
+}
+
+.header_item .w_50 span {
+    display: block;
+    line-height: 30px;
+}
+
+.inp {
+    width: 2.56rem;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+/*搜索结束*/
+
+
+/*顶部下载开始*/
+
+.header_item {
+    padding: 0 20px;
+    line-height: 30px !important;
+}
+
+.search_btn {
+    height: 100%;
+    line-height: 30px;
+    border-radius: 4px;
+    padding-left: 36px;
+    margin-right: 24px;
+}
+
+
+/*顶部下载结束*/
+
+.base_btn {
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid;
+}
+
+.c_span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    vertical-align: middle;
+    margin-right: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.c_span.current {
+    border: none;
+    background: url(../../src/assets/images/chooce.jpg) no-repeat center /100% !important;
+}
+
+.base_btn_co01 {
+    color: #007DF2;
+    border-color: #007DF2;
+}
+
+.base_btn_co02 {
+    color: #F4514A;
+    border-color: #F4514A;
+}
+
+
+/*滚动条样式开始*/
+
+.views_100ch_1,
+.scroll_bar,
+.views_100ch_2 {
+    scrollbar-arrow-color: #fff;
+    /*上下箭头*/
+    scrollbar-track-color: #1589ce;
+    /*底层背景色*/
+    scrollbar-face-color: #27aeff;
+    /*滚动条前景色*/
+    scrollbar-Shadow-color: #1589ce;
+    /*滚动条边线色*/
+}
+
+
+/*chrome滚动条颜色设置*/
+
+
+/*1*/
+
+.views_100ch_1::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+    background-color: transparent;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+.views_100ch_1::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px #fff;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+.views_100ch_1::-webkit-scrollbar-thumb {
+    background-color: #dddee0;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px #dddee0;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+
+/*2*/
+
+.scroll_bar::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+    background-color: transparent;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+.scroll_bar::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px #fff;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+.scroll_bar::-webkit-scrollbar-thumb {
+    background-color: #dddee0;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px #dddee0;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+
+/*3*/
+
+.views_100ch_2::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+    background-color: transparent;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+.views_100ch_2::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px #fff;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+.views_100ch_2::-webkit-scrollbar-thumb {
+    background-color: #dddee0;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px #dddee0;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+
+/*滚动条样式结束*/
+
+.span_color {
+    color: #8C8C8C;
+}
+
+.el-table__fixed-right {
+    height: 100% !important;
+}
+
+.dialog .el-input--small .el-input__inner{
+    width:100%!important;
+}
+.container{
+    margin-top:20px;
+}

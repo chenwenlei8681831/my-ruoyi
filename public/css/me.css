@@ -1,0 +1,386 @@
+.w_100 {
+    display: block;
+    width: 100%;
+}
+
+.w_65 {
+    width: 65%;
+}
+
+.w_60 {
+    width: 60%;
+}
+
+.w_50 {
+    width: 50%;
+}
+
+.w_45 {
+    width: 45%;
+}
+
+.w_40 {
+    width: 40%;
+}
+
+.w_45 {
+    width: 45%;
+}
+
+.w_333 {
+    width: 33.3333%;
+}
+
+.w_666 {
+    width: 66.6666%;
+}
+
+.w_35 {
+    width: 35%;
+}
+
+.w_30 {
+    width: 30%;
+}
+
+.w_25 {
+    width: 25%;
+}
+
+.w_20 {
+    width: 20%;
+}
+
+.h_100 {
+    display: block;
+    height: 100%;
+}
+
+.hv_100 {
+    height: 100vh;
+}
+
+.p_block {
+    display: block;
+}
+
+.bg_fff {
+    background-color: #fff;
+}
+
+.bg_blue {
+    background-color: #007DF2!important;
+}
+
+.co_fff {
+    color: #fff!important;
+}
+
+.font12 {
+    font-size: 12px;
+}
+
+.font13 {
+    font-size: 13px;
+}
+
+.font14 {
+    font-size: 14px;
+}
+
+.font15 {
+    font-size: 15px;
+}
+
+.font16 {
+    font-size: 16px;
+}
+
+.font18 {
+    font-size: 18px;
+}
+
+.font20 {
+    font-size: 20px;
+}
+
+.font24 {
+    font-size: 24px;
+}
+
+.red {
+    box-sizing: border-box;
+    border: red 1px solid;
+}
+
+.pad_all_30 {
+    padding: 0.3rem;
+}
+
+.pad_t_20 {
+    padding-top: 0.2rem;
+}
+
+.pad_l_20 {
+    padding-left: 0.2rem;
+}
+
+.pad_r_20 {
+    padding-right: 0.2rem;
+}
+
+.pad_b_20 {
+    padding-bottom: 0.2rem;
+}
+
+.pad_l_40 {
+    padding-left: 0.4rem;
+}
+
+.pad_r_40 {
+    padding-right: 0.4rem;
+}
+
+.pad_b_40 {
+    padding-bottom: 0.4rem;
+}
+
+.pad_l_10 {
+    padding-left: 0.1rem;
+}
+
+.pad_r_10 {
+    padding-right: 0.1rem;
+}
+
+.pad_t_30 {
+    padding-top: 0.3rem;
+}
+
+.pad_l_30 {
+    padding-left: 0.3rem;
+}
+
+.pad_r_30 {
+    padding-right: 0.3rem;
+}
+
+.pad_b_30 {
+    padding-bottom: 0.3rem;
+}
+
+.pad_all_50 {
+    padding: 0.5rem;
+}
+
+.pad_all_20 {
+    padding: 0.2rem;
+}
+
+.pad_all_30 {
+    padding: 0.3rem;
+}
+
+.pad_t_50 {
+    padding-top: 0.5rem;
+}
+
+.pad_l_50 {
+    padding-left: 0.5rem;
+}
+
+.pad_r_50 {
+    padding-right: 0.5rem;
+}
+
+.pad_none {
+    padding: 0!important;
+}
+
+.d_block {
+    display: block;
+}
+
+.d_l_block {
+    display: inline-block;
+}
+
+.b_radius50 {
+    border-radius: 50%;
+    ;
+}
+
+.b_radius10 {
+    border-radius: 0.1rem;
+}
+
+.mar_t_10 {
+    margin-top: 0.1rem;
+}
+
+.mar_b_10 {
+    margin-bottom: 0.1rem;
+}
+
+.mar_l_10 {
+    margin-left: 0.1rem;
+}
+
+.mar_l_15 {
+    margin-left: 0.15rem;
+}
+
+.mar_r_05 {
+    margin-right: 0.05rem;
+}
+
+.mar_r_10 {
+    margin-right: 0.1rem;
+}
+
+.mar_r_15 {
+    margin-right: 0.15rem;
+}
+
+.mar_b_15 {
+    margin-bottom: 0.15rem;
+}
+
+.mar_t_20 {
+    margin-top: 0.2rem;
+}
+
+.mar_b_20 {
+    margin-bottom: 0.2rem;
+}
+
+.mar_l_20 {
+    margin-left: 0.2rem;
+}
+
+.mar_r_20 {
+    margin-right: 0.2rem;
+}
+
+.mar_t_30 {
+    margin-top: 0.3rem;
+}
+
+.mar_b_30 {
+    margin-bottom: 0.3rem;
+}
+
+.mar_l_30 {
+    margin-left: 0.3rem;
+}
+
+.mar_l_40 {
+    margin-left: 0.4rem;
+}
+
+.mar_r_30 {
+    margin-right: 0.3rem;
+}
+
+.h_30px {
+    height: 30px;
+}
+
+.line_30px {
+    line-height: 30px;
+}
+
+.h_40px {
+    height: 40px;
+}
+
+.line_40px {
+    line-height: 40px;
+}
+
+.h_50px {
+    height: 50px;
+}
+
+.line_50px {
+    line-height: 50px;
+}
+
+.line_50px {
+    line-height: 50px;
+}
+
+.h_60px {
+    height: 60px;
+}
+
+.line_60px {
+    line-height: 60px;
+}
+
+
+/*单行显示不下省略号开始*/
+
+.s_l {
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
+
+
+/*单行显示不下省略号结束*/
+
+.pointer {
+    cursor: pointer;
+}
+
+.inp_border {
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    padding-left: 0.16rem;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.b_btn {
+    display: block;
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.reset_btn {
+    box-sizing: border-box;
+    border: 1px solid rgba(217, 217, 217, 1);
+}
+
+.over_hide {
+    overflow: hidden;
+}
+
+.font_bold {
+    font-weight: bold;
+}
+
+.t_center,
+.text_center {
+    text-align: center;
+}
+
+.text_left {
+    text-align: left;
+}
+
+.text_right {
+    text-align: right;
+}
+
+.pointer {
+    cursor: pointer;
+}
