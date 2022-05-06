@@ -3,6 +3,7 @@ import { getRouters } from '@/api/menu'
 import Layout from '@/layout/index'
 
 const permission = {
+  namespaced: true,
   state: {
     firstPath:'/',
     routes: [],

@@ -2,7 +2,7 @@ import router from './router';
 import store from './store';
 import { getToken } from '@/utils/auth';
 
-
+//白名单
 const whiteList = ['/login', '/auth-redirect', '/bind', '/register']
 
 router.beforeEach((to, from, next) => {
@@ -13,9 +13,9 @@ router.beforeEach((to, from, next) => {
       if (store.getters.roles.length === 0) {
         const roles = ['admin'];
         store.commit('SET_ROLES', roles);
-        store.dispatch('GenerateRoutes', { }).then(accessRoutes => {
+        store.dispatch('permission/GenerateRoutes', { }).then(accessRoutes => {
           // 根据roles权限生成可访问的路由表
-          router.addRoutes(accessRoutes) // 动态添加可访问路由表
+          router.addRoutes(accessRoutes);
           next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
         })
       } else {

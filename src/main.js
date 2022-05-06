@@ -11,20 +11,8 @@ import permission from '@/directive/permission';
 import '@/assets/icons'; // icon
 import '@/permission'; // permission control
 
-import rem from '../public/js/rem';
-rem();
-
 //css: 
 import '@/assets/styles/index.scss';
-import '../public/css/reset.css';
-import '../public/css/public.css';
-import '../public/css/ele.css';
-import '../public/css/me.css';
-import '../public/css/flex.css';
-import '../public/css/fontsize.css';
-import '../public/css/color.css';
-
-
 
 Vue.prototype.msgSuccess = function (msg) {
   this.$message({ showClose: true, message: msg, type: "success" });
@@ -47,14 +35,9 @@ Vue.use(Element, {
 
 Vue.config.productionTip = false;
 
-Vue.prototype.message = function (title,types) {//类型：success error warning
-  let type = types?types:'success';
-  this.$message({
-      type: type,
-      message: title,
-      dangerouslyUseHTMLString: true
-  });
-};
+import { message,rem } from '@/assets/js/common';
+Vue.prototype.message =  message;
+rem();
 
 new Vue({
   el: '#app',

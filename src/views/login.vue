@@ -20,7 +20,8 @@
           <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon" />
         </el-input>
       </el-form-item>
-      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
+      <!-- <SliderCheck class="w_100" v-model="sliderIsLock"></SliderCheck> -->
+      <el-checkbox v-model="loginForm.rememberMe" style="margin:15px 0px 15px 0px;">记住密码</el-checkbox>
       <!-- 登录按钮 -->
       <el-form-item style="width:100%;">
         <el-button :loading="loading" size="medium" type="primary" style="width:100%;" @click.native.prevent="handleLogin" >
@@ -34,9 +35,13 @@
 
 <script>
 import Cookies from "js-cookie";
-import { encrypt, decrypt } from '@/utils/jsencrypt'
+import { encrypt, decrypt } from '@/utils/jsencrypt';
+import SliderCheck from '@/components/SliderCheck';
 //import {mapState} from 'vuex';
 export default {
+  components: {
+    SliderCheck
+  },
   name: "Login",
   watch: {
     $route: {
@@ -48,6 +53,7 @@ export default {
   },
   data() {
     return {
+      sliderIsLock: false,
       codeUrl: "",
       cookiePassword: "",
       loginForm: {

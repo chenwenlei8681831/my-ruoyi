@@ -157,7 +157,7 @@ body {
     padding-left: 36px;
     height: 30px;
     line-height: 30px;
-    background: url(../../src/assets/images/load/refresh.png) no-repeat left 12px center /14px;
+    background: url(../images/load/refresh.png) no-repeat left 12px center /14px;
 }
 
 .circle {
@@ -227,7 +227,7 @@ body {
 
 .return_to {
     right: calc(80px + 0.1rem);
-    background-image: url(../../src/assets/images/left_arrow01.png);
+    background-image: url(../images/left_arrow01.png);
 }
 
 
@@ -353,7 +353,7 @@ body {
 
 .c_span.current {
     border: none;
-    background: url(../../src/assets/images/chooce.jpg) no-repeat center /100% !important;
+    background: url(../images/chooce.jpg) no-repeat center /100% !important;
 }
 
 .base_btn_co01 {

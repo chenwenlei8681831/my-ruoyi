@@ -63,7 +63,7 @@ export default {
 
         handleClick(row,type) {
             if(type=='detail'){
-
+                this.$router.push({ path: this.listMsg.detailUrl , query: { id: row.id } });
             }else if(type=='edit'){
 
             }else if(type=='down'){
@@ -81,18 +81,21 @@ export default {
 </script>
 
 <style scoped>
-    /deep/ .color_red{
+    ::v-deep .color_red{
         color:red;
     }
-    /deep/ .el-table--mini, .el-table--small, .el-table__expand-icon,.el-button--mini, .el-button--small{
+    ::v-deep .el-table--mini, .el-table--small, .el-table__expand-icon,.el-button--mini, .el-button--small{
         font-size:14px;
     }
-    /deep/ .cell{
+    ::v-deep .cell{
         height:50px;
         line-height:50px; 
         padding-left: 20px;
     }
-    /deep/ .el-table th.el-table__cell>.cell{
+    ::v-deep .el-table th.el-table__cell>.cell{
+        padding-left: 20px;
+    }
+    ::v-deep .el-table th > .cell{
         padding-left: 20px;
     }
 </style>

@@ -1,21 +1,21 @@
 <template>
   <div class="container w_100 bg_fff">
         <div class="bg_fff">
-        <!-- <bot-header></bot-header> -->
-        <div class="views_100ch_1 po_r">
-            <my-tabcard :tabcard='tabcard' :seleteCard='seleteCard'></my-tabcard>
-            <my-search @search_list='search_list' :searchList="searchList"></my-search>
-            <my-top :topMsg='topMsg' :create='create' :downSomeWarn='downSomeWarn' :downAllWarn='downAllWarn'></my-top>
-            <my-list 
-                :listMsg='listMsg' 
-                :handleCurrentChange='handleCurrentChange' 
-                :handleSizeChange='handleSizeChange' 
-                :deleteWarn='deleteWarn' 
-                :select='select' 
-                :selectAll='selectAll'
-            ></my-list>
+            <!-- <bot-header></bot-header> -->
+            <div class="views_100ch_1 po_r">
+                <my-tabcard :tabcard='tabcard' :seleteCard='seleteCard'></my-tabcard>
+                <my-search @search_list='search_list' :searchList="searchList"></my-search>
+                <my-top class="mar_t_10" :topMsg='topMsg' :create='create' :downSomeWarn='downSomeWarn' :downAllWarn='downAllWarn'></my-top>
+                <my-list 
+                    :listMsg='listMsg' 
+                    :handleCurrentChange='handleCurrentChange' 
+                    :handleSizeChange='handleSizeChange' 
+                    :deleteWarn='deleteWarn'
+                    :select='select' 
+                    :selectAll='selectAll'
+                ></my-list>
+            </div>
         </div>
-    </div>
     <my-dialog :ruleForm='dialogRuleForm' :rules='dialogRules' :msgList='dialogMsgList' :dialog='dialog'></my-dialog>
   </div>
 </template>
@@ -60,6 +60,7 @@ export default {
           selectIdArr:[],
           listUrl:'/merchant/list',
           deleteUrl:'',
+          detailUrl:'userDetail',
           selectData:{
               name:'',
               contact_name:'',
@@ -238,6 +239,7 @@ export default {
             }
             this.getList();
         },
+
 
   },
   mounted(){
