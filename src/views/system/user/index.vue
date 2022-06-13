@@ -219,7 +219,7 @@ export default {
 
         handleSubmit(){
             console.log('数据',this.dialogMsg.ruleForm)
-        }
+        },
 
 
     },
