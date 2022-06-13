@@ -4,7 +4,7 @@
       <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
       <div class="right-menu flex row a_center">
         <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
-          <div class="avatar-wrapper">
+          <div class="avatar-wrapper flex row a_center">
             <img src="../../assets/images/avatar.png" class="user-avatar">
             <i class="el-icon-caret-bottom" />
           </div>
@@ -139,6 +139,7 @@ export default {
           cursor: pointer;
           width: 30px;
           height: 30px;
+          margin-top: 10px;
           border-radius: 10px;
         }
 

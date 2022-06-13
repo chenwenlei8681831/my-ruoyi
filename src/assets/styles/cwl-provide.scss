@@ -1,57 +1,80 @@
 
-// 公共
-html,
-body,
-ul,
-li,
-ol,
-dl,
-dd,
-dt,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-form,
-fieldset,
-legend,
-img,
-div {
-    margin: 0;
-    padding: 0;
-    /* font-family: '微软雅黑';
-    font-size: 16px; */
-}
-body {
-    height: 100%;
-    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-    font-size: 16px;
-}
-.b_line { border-bottom: 1px solid #F2F3F5; box-sizing: border-box; }
-.b_block { display: block; }
+
+//公共
+.red { border:red solid 1px; }
+.b_block,.b_box { display: block; }
 .i_block { display: inline-block; }
 .b_s { box-sizing: border-box; }
 .pointer { cursor: pointer; }
-.red { border:red solid 1px; }
 .b_bold{ font-weight: bold; }
-.s_l {
-    white-space:nowrap;       /* 使文本不可换行 */
-    overflow:hidden;          /* 隐藏溢出部分 */ 
-    text-overflow:ellipsis;   /* 显示省略符号来代表被隐藏的文本 */
-}
+.text_center { text-align: center; }
+.text_left { text-align: left; }
+.text_right { text-align: right; }
+.over_hide { overflow: hidden; }
+.font_bold { font-weight: bold; }
+.bg_img_over{ background: no-repeat center /over; }
+.b_line { border-bottom: 1px solid #F2F3F5; box-sizing: border-box; }
+.s_l { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
-.col_fff { color: #fff!important; }
-.col01 { color: #f4514a!important; }
-.col02 { color: #47c321!important; }
-.col03 { color: #8c8c8c!important }
-.col04 { color: #409eff!important }
-.col05 { color: rgb(48, 49, 51)!important }
+
+// 宽度、高度
+.w_20 { width: 20%; }
+.w_25 { width: 25%; }
+.w_30 { width: 30%; }
+.w_333 { width: 33.3333%; }
+.w_35 { width: 35%; }
+.w_40 { width: 40%; }
+.w_45 { width: 45%; }
+.w_50 { width: 50%; }
+.w_60 { width: 60%; }
+.w_65 { width: 65%; }
+.w_666 { width: 66.6666%; }
+.w_90 { width: 90%; }
+.w_95 { width: 95%; }
+.w_100 { display: block; width: 100%; }
+.h_100 { display: block; height: 100%; }
+.hv_100 { height: 100vh; }
+
+//margin
+.mar_t_10 { margin-top: 0.1rem; }
+.mar_b_10 { margin-bottom: 0.1rem; }
+.mar_l_10 { margin-left: 0.1rem; }
+.mar_l_15 { margin-left: 0.15rem; }
+.mar_r_05 { margin-right: 0.05rem; }
+.mar_r_10 { margin-right: 0.1rem; }
+.mar_r_15 { margin-right: 0.15rem; }
+.mar_b_15 { margin-bottom: 0.15rem; }
+.mar_t_20 { margin-top: 0.2rem; }
+.mar_b_20 { margin-bottom: 0.2rem; }
+.mar_l_20 { margin-left: 0.2rem; }
+.mar_r_20 { margin-right: 0.2rem; }
+.mar_l_30 { margin-left: 0.3rem; }
+.mar_r_30 { margin-right: 0.3rem; }
+.mar_t_30 { margin-top: 0.3rem; }
+.mar_b_30 { margin-bottom: 0.3rem; }
+.mar_l_40 { margin-left: 0.4rem; }
+
+//padding
+.pad_t_10 { padding-top: 0.1rem; }
+.pad_b_10 { padding-bottom: 0.1rem; }
+.pad_l_10 { padding-left: 0.1rem; }
+.pad_l_15 { padding-left: 0.15rem; }
+.pad_r_05 { padding-right: 0.05rem; }
+.pad_r_10 { padding-right: 0.1rem; }
+.pad_r_15 { padding-right: 0.15rem; }
+.pad_b_15 { padding-bottom: 0.15rem; }
+.pad_t_20 { padding-top: 0.2rem; }
+.pad_b_20 { padding-bottom: 0.2rem; }
+.pad_l_20 { padding-left: 0.2rem; }
+.pad_r_20 { padding-right: 0.2rem; }
+.pad_l_30 { padding-left: 0.3rem; }
+.pad_r_30 { padding-right: 0.3rem; }
+.pad_t_30 { padding-top: 0.3rem; }
+.pad_b_30 { padding-bottom: 0.3rem; }
+.pad_l_40 { padding-left: 0.4rem; }
+
 
 //flex布局
-.b_s{ box-sizing: border-box; }
 .flex{ display: flex; }
 .flex_1{ flex:1; }
 .flex_2{ flex:2; }
@@ -79,6 +102,16 @@ body {
 .text_left{ text-align: left; }	
 .text_right{ text-align: right; }
 
+
+// 浮动和定位
+.po_x { position: fixed;z-index: 9; }
+.po_r { position: relative; }
+.po_b { position: absolute; }
+.f_l { float: left; }
+.f_r { float: right; }
+.clearfix { clear: both; float: none; }
+
+
 // 字体大小
 //px
 .font12 { font-size: 12px; }
@@ -100,6 +133,7 @@ body {
 .font24_rem { font-size: 0.24rem; }
 .font26_rem { font-size: 0.26rem; }
 
+
 //行高
 .line_hight_20{ line-height:20px; }
 .line_hight_24{ line-height:24px; }
@@ -107,6 +141,15 @@ body {
 .line_hight_36{ line-height:36px; }
 .line_hight_40{ line-height:40px; }
 .line_hight_56{ line-height:56px; }
+
+
+// 字体颜色
+.col_fff { color: #fff!important; }
+.col01 { color: #f4514a!important; }
+.col02 { color: #47c321!important; }
+.col03 { color: #8c8c8c!important }
+.col04 { color: #409eff!important }
+.col05 { color: rgb(48, 49, 51)!important }
 
 
 //背景颜色
@@ -122,3 +165,26 @@ body {
 .bg_color09{ background:#F01D24; }
 
 //其他扩展样式
+/*按钮*/
+.delete_button {
+    display: inline-block;
+    width: 1rem;
+    height: 0.34rem;
+    background-color: #FE6262;
+    color: #fff;
+    line-height: 0.34rem;
+    border-radius: 0.04rem;
+    cursor: pointer;
+    font-size: 0.15rem;
+}
+.submit_btn {
+    display: inline-block;
+    width: 1rem;
+    height: 0.34rem;
+    background-color: #007DF2;
+    color: #fff;
+    line-height: 0.34rem;
+    border-radius: 0.04rem;
+    cursor: pointer;
+    font-size: 0.15rem;
+}

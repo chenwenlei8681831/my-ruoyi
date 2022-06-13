@@ -97,60 +97,9 @@ body {
 }
 
 
-/*常用颜色开始*/
-
-.mr_color01 {
-    background-color: #F4F9FF;
-}
-
-.bg_color01 {
-    background-color: #eee;
-}
-
-.bg_color02 {
-    background-color: yellow;
-}
-
-.bg_color03 {
-    background-color: green;
-}
-
-.bg_color04 {
-    background-color: blue;
-}
-
-.bg_color05 {
-    background-color: blueviolet;
-}
-
-.bg_color06 {
-    background-color: pink;
-}
-
-.bg_color07 {
-    background-color: cadetblue;
-}
-
-.bg_color08 {
-    background-color: orange;
-}
-
-.color01 {
-    color: #007DF2 !important;
-}
 
 
-/*常用颜色结束*/
 
-.b_line {
-    border-bottom: 1px solid #eee;
-    box-sizing: border-box;
-}
-
-.all_line {
-    border: 1px solid #eee;
-    box-sizing: border-box;
-}
 
 .refresh {
     width: 80px;

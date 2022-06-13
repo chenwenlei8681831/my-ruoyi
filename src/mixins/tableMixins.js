@@ -2,24 +2,7 @@
 //列表数据
 export default {
     methods: {
-        
-       //获取列表数据
-        getTables(data,listUrl,isFeedback,isLoading,isFlag,isCheckToken) {
-            let page = this.listMsg.page;
-            let count = this.listMsg.count;
-            let obj = sign({
-                ...data,
-                page,
-                count
-            });
-            let promise = new Promise((resolve,reject)=>{
-                vue_Post(this, listUrl, obj, msg => {
-                    resolve(msg);
-                }, isFeedback, isLoading, isFlag, isCheckToken );
-            });
-            return promise;
-        },
-       
+    
         //翻页
         handleCurrentChange(val){
             this.listMsg.page = val.page;

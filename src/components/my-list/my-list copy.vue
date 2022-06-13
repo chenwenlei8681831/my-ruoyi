@@ -12,14 +12,13 @@
                 :label="item.label" 
                 :key="index">
                 <template slot-scope="scope">
-                    <!-- 特殊按钮样式 -->
-                    <el-tag v-if="listMsg.btnProp.includes(item.prop)" size="medium">{{ scope.row[item.prop] }}</el-tag>
                     <!-- 鼠标浮动提示 -->
-                    <div v-else slot="reference" class="name-wrapper pointer">
-                        <div slot="reference" :title="scope.row[item.prop]" class="name-wrapper pointer">    
-                            {{ scope.row[item.prop] }}
+                    <el-popover trigger="hover" placement="top" v-if="listMsg.btnProp.includes(item.prop)">
+                        <p>{{ scope.row[item.prop] }}</p>
+                        <div  slot="reference" class="name-wrapper pointer">
+                            <el-tag size="medium">{{ scope.row[item.prop] }}</el-tag>
                         </div>
-                    </div>
+                    </el-popover>
                 </template>
             </el-table-column>
             <!-- 列表操作 -->
@@ -83,9 +82,9 @@ export default {
             if(type=='detail'){
                 this.$router.push({ path: this.listMsg.detailUrl , query: { id: row.id } });
             }else if(type=='edit'){
-                this.$router.push({ path: this.listMsg.editUrl , query: { id: row.id } });
+
             }else if(type=='down'){
-                //下载
+
             }else if(type=='delete'){
                 this.deleteWarn(row.id);
             };

@@ -1,7 +1,6 @@
 <template>
-  <div class="container w_100 bg_fff">
+    <div class="container w_100 bg_fff">
         <div class="bg_fff">
-            <!-- <bot-header></bot-header> -->
             <div class="views_100ch_1 po_r">
                 <my-tabcard :tabcard='tabcard' :seleteCard='seleteCard'></my-tabcard>
                 <my-search @search_list='search_list' :searchList="searchList"></my-search>
@@ -16,178 +15,154 @@
                 ></my-list>
             </div>
         </div>
-    <my-dialog :ruleForm='dialogRuleForm' :rules='dialogRules' :msgList='dialogMsgList' :dialog='dialog'></my-dialog>
-  </div>
+        <my-dialog :dialogMsg='dialogMsg' :handleSubmit='handleSubmit'>
+            <template #address>
+                <el-input
+                    :style="{width:dialogMsg.config.itemWidth}"
+                    size="mini"
+                    v-model="dialogMsg.ruleForm.address"
+                    :placeholder="`请输入${dialogMsg.list[5].title}`"
+                    clearable>
+                </el-input>
+            </template>
+        </my-dialog>
+    </div>
 </template>
 
 <script>
-var THIS;
-import request from '@/utils/request';
 import alertMixins from "@/mixins/alertMixins";
 import tableMixins from "@/mixins/tableMixins";
-import botHeader from "@/components/bot-header/bot-header";
+import operationMixins from "@/mixins/operationMixins";
 import myTabcard from "@/components/my-tabcard/my-tabcard";
 import mySearch from "@/components/my-search/my-search";
 import myList from "@/components/my-list/my-list";
 import myDialog from "@/components/my-dialog/my-dialog";
 import myTop from "@/components/my-top/my-top";
 import myPagination from "@/components/my-pagination/my-pagination";
+import {getUserList} from "@/api/user";
+
 export default {
-  name: "User",
-  components: {
-      myTop,
-      myTabcard,
-      mySearch,
-      botHeader,
-      myDialog,
-      myList,
-      myPagination
-  },
-  mixins:[tableMixins,alertMixins],
-  data() {
-    return {
-      id: "",
-      //类型 1：列表  2：详情  3:编辑
-      show_type:0,
-      userType: 2,
-      //列表数据
-      listMsg:{
-          page: 1,
-          count: 10,
-          total: 0,
-          currentPage: 0,
-          hasSelect:true,           //选择框
-          selectIdArr:[],
-          listUrl:'/merchant/list',
-          deleteUrl:'',
-          detailUrl:'userDetail',
-          selectData:{
-              name:'',
-              contact_name:'',
-              mobile:'',
-          },
-          header:[],
-          list:[],
-          operation:{
-              title:'',
-              width:'150',
-              select:[
-                  { type:'detail',title:'查看' },
-                  { type:'edit',title:'编辑' },
-                  { type:'delete',title:'删除' }
-              ],    
-          }
-      },
-      //选项卡
-      tabcard:{
-          seleteIndex:0,
-          isshowNumber:true,
-          seleteArr:[
-              { name:'选项一', number:0 ,type:0 },
-              { name:'选项二', number:0 ,type:1 },
-              { name:'选项三', number:0 ,type:2 },
-          ]
-      },
-      //搜索
-      searchList:[
-          { 
-              type:'text',
-              title:'企业名称',
-              value:'' 
-          },
-          { 
-              type:'text',
-              title:'联系人',
-              value:'' 
-          },
-          { 
-              type:'phone',
-              title:'联系电话',
-              value:'' 
-          },
-      ],
-      //顶部操作
-      topMsg:{
-          downSomeUrl:'',
-          downAllUrl:'',
-          select:[
-              { type:'create',title:'创建' },
-              { type:'downsome',title:'批量导出' },
-              { type:'downall',title:'导出全部' },
-          ],
-      },
-      //弹窗
-      dialog:{
-          showflag:false,
-          position:'left',
-          width:'800px',
-          itemWidth:'260px',
-          title:''
-      },
-      dialogMsgList:[
-        { 
-            type:'text',
-            key:'name',
-            title:'服务商名称',
-            value:'' 
-        },
-        { 
-            type:'date',
-            key:'time',
-            title:'选择时间',
-            value:''
-        },
-        { 
-            type:'select',
-            title:'服务商筛选',
-            key:'servicer',
-            isRemote:1,
-            remoteMethod:this.remoteMethod_fws,
-            option:[],
-            value:'' 
-        },
-        { 
-            type:'dateDaterange',
-            key:'sendtimer',
-            title:'发布时间',
-            value:[]
-        },
-        { 
-            type:'radio',
-            title:'是否切换',
-            key:'tagger',
-            option:[
-              { title:'是',id:1 },
-              { title:'否',id:0 }
+    name: "User",
+    components: {
+        myTop,
+        myTabcard,
+        mySearch,
+        myDialog,
+        myList,
+        myPagination
+    },
+    mixins:[tableMixins,alertMixins,operationMixins],
+    data() {
+        return {
+            id: "",
+            //类型 1：列表  2：详情  3:编辑
+            show_type:0,
+            userType: 2,
+            //列表数据
+            listMsg:{
+                page: 1,
+                count: 10,
+                total: 0,
+                currentPage: 0,
+                hasSelect:true,             //选择框
+                selectIdArr:[],
+                listUrl:'/merchant/list',   //获取列表-接口地址
+                deleteUrl:'',               //删除列表-接口地址
+                detailUrl:'userDetail',     //详情地址
+                editUrl:'userEdit',         //编辑地址
+                btnProp:['p_name'],         //特殊样式
+                selectData:{
+                    name:'',
+                    contact_name:'',
+                    mobile:'',
+                },
+                header:[],
+                list:[],
+                operation:{
+                    title:'',
+                    width:'150',
+                    select:[
+                        { type:'detail',title:'查看' },
+                        { type:'edit',title:'编辑' },
+                        { type:'delete',title:'删除' }
+                    ],    
+                }
+            },
+            //选项卡
+            tabcard:{
+                seleteIndex:0,
+                isshowNumber:true,
+                seleteArr:[
+                    { name:'选项一', number:0 ,type:0 },
+                    { name:'选项二', number:0 ,type:1 },
+                    { name:'选项三', number:0 ,type:2 },
+                ]
+            },
+            //搜索
+            searchList:[
+                { type:'text', title:'企业名称', value:'' },
+                { type:'text', title:'联系人', value:'' },
+                { type:'phone', title:'联系电话', value:'' },
             ],
-            value:''
-        },
-      ],
-      dialogRuleForm:{
-          name:'',
-          time:'',
-          servicer:'',
-          sendtimer:'',
-          tagger:''
-      },
-      dialogRules:{
-          name:[{ required: true, message: '请输入服务商名称', trigger: [] }],
-          time:[{ required: true, message: '请选择时间', trigger: [] }],
-          servicer:[{ required: true, message: '请选择服务商', trigger: [] }],
-          sendtimer:[{ required: true, message: '请输入发布时间', trigger: [] }],
-          tagger:[{ required: true, message: '请选择是否切换', trigger: [] }],
-      },
-    };
+            //顶部操作
+            topMsg:{
+                downSomeUrl:'',
+                downAllUrl:'',
+                select:[
+                    { type:'create',title:'创建' },
+                    { type:'downsome',title:'批量导出' },
+                    { type:'downall',title:'导出全部' },
+                ],
+            },
+            //弹窗
+            dialogMsg:{
+                config:{
+                    show:false,
+                    position:'left',
+                    width:'800px',
+                    itemWidth:'260px',
+                    title:''
+                },
+                list:[
+                    { type:'text', key:'name', title:'服务商名称', value:'' },
+                    { type:'date', key:'time', title:'选择时间', value:'' },
+                    { type:'select', title:'服务商筛选', key:'servicer', isRemote:1, remoteMethod:this.remoteMethod_fws, option:[], value:'' },
+                    { type:'dateDaterange', key:'sendtimer', title:'发布时间', value:[] },
+                    { type:'radio', title:'是否切换', key:'tagger', option:[ { title:'是',id:1 }, { title:'否',id:0 } ], value:'' },
+                    { type:'slot', key:'address', title:'详细地址', value:'' },
+                    { type:'textarea', key:'detail', title:'内容详情', value:'',rows:'',maxlength:'',class:'w_100' },
+                ],
+                ruleForm:{
+                    name:'',
+                    time:'',
+                    servicer:'',
+                    sendtimer:'',
+                    tagger:'',
+                    address:'',
+                    detail:'',
+                },
+                rules:{
+                    name:[{ required: true, message: '请输入服务商名称', trigger: [] }],
+                    time:[{ required: true, message: '请选择时间', trigger: [] }],
+                    servicer:[{ required: true, message: '请选择服务商', trigger: [] }],
+                    sendtimer:[{ required: true, message: '请输入发布时间', trigger: [] }],
+                    tagger:[{ required: true, message: '请选择是否切换', trigger: [] }],
+                    address:[{ required: true, message: '请输入详细地址', trigger: [] }],
+                    detail:[{ required: true, message: '请输入内容详情', trigger: [] }],
+                },
+            }
+        
+        };
   },
 
-  methods: {
+    methods: {
 
-        create() {
-            THIS.dialog.showflag = true;
-        },
-
+            
         getList() {
-            request({url: '/getServiceList',method: 'get', data: {}}).then(res => {
+            let data = {
+                count:this.listMsg.count
+            };
+            getUserList(data).then(res => {
                 let msg = res.data;
                 this.listMsg.selectIdArr = [];
                 this.listMsg.total = msg.count;
@@ -208,29 +183,31 @@ export default {
                     });
                     return  obj;
                 });
-            })
-            .catch(() => {
-              this.loading = false;
-            });
+            }).catch(() => { this.loading = false; });
         },
 
         remoteMethod_fws(msg){
             if(msg){
-                THIS.searchList[2].option = [
+                this.searchList[2].option = [
                     { title:'商户04',id:1 },
                     { title:'商户05',id:2 },
                     { title:'商户06',id:3 }
                 ]
             }else{
-                THIS.searchList[2].option = [
+                this.searchList[2].option = [
                     { title:'商户01',id:1 },
                     { title:'商户02',id:2 },
                     { title:'商户03',id:3 }
                 ]
             };
+            this.dialogMsg.list[2].option = [
+                { title:'商户01',id:1 },
+                { title:'商户02',id:2 },
+                { title:'商户03',id:3 }
+            ]
         },
 
-        search_list(msg){
+        search_list(){
             let val = this.searchList;
             this.listMsg.selectData = {
                 name:val[0].value,
@@ -240,16 +217,18 @@ export default {
             this.getList();
         },
 
+        handleSubmit(){
+            console.log('数据',this.dialogMsg.ruleForm)
+        }
 
-  },
-  mounted(){
-        THIS = this;
-        THIS.userType = window.localStorage.userType;
-        THIS.remoteMethod_fws('');
-        THIS.getList();
-  }
+
+    },
+    mounted(){
+        this.userType = window.localStorage.userType;
+        this.remoteMethod_fws('');
+        this.getList();
+    }
 };
 </script>
 <style scoped>
-
 </style>

@@ -50,10 +50,22 @@
                         <el-radio v-for="(op_item,op_index) in item.option" :key="op_index" :label="op_item.id">{{op_item.title}}</el-radio>
                     </el-radio-group>
                 </div>
+                <!-- 文本框 -->
+                <el-input v-if="item.type == 'textarea'" 
+                    type="textarea"
+                    v-model="ruleForm[item.key]"
+                    :placeholder="`请输入${item.title}`"
+                    show-word-limit
+                    :maxlength="item.maxlength ||100"
+                    :rows='item.item || 3'
+                    clearable>
+                </el-input>
+                <!-- 自定义插槽 -->
+                <div v-if="item.type == 'slot'"> <slot :name="item.key"></slot> </div>
             </el-form-item>
             <div class="dialog-footer w_100 flex row j_center mar_t_30">
-                <el-button type="primary" @click="ClickSubimt">确定</el-button>
-                <el-button @click="handleClose">取消</el-button>
+                <el-button type="primary" @click="confirm">确定</el-button>
+                <el-button @click="cancel">取消</el-button>
             </div>
         </el-form>
   </div>
@@ -61,60 +73,61 @@
 
 <script>
 export default {
-  props: {
-      form: {
+    props: {
+        form: {
+                type: Object,
+                default: ()=> ({
+                    width:'400px',
+                    position:'left',
+                    itemWidth:'260px',
+                }),
+        },
+        msgList: {
+            type: Array,
+            default: () => [],
+        },
+        ruleForm: {
             type: Object,
-            default: ()=> ({
-                width:'400px',
-                position:'left',
-                itemWidth:'260px',
-            }),
-      },
-      msgList: {
-          type: Array,
-          default: () => [],
-          },
-      },
-      ruleForm: {
-          type: Object,
-          default: () => {},
-          },
-      rules: {
-          type: Object,
-          default: () => {},
-      },
-  name: "",
-  data() {
-    return {
-        
-    };
-  },
-  methods: {
+            default: () => {},
+        },
+        rules: {
+            type: Object,
+            default: () => {},
+        },
+    },
+    name: "",
+    data() {
+        return {
+            
+        };
+    },
+    methods: {
    
-        ClickSubimt(){
+        confirm(){
             this.$refs.ruleForm.validate((valid) => {
                 if (valid) {
-                    this.submit_from();
+                    this.handleSubmit();
                 } else {
                     this.$message({
                         type: 'warning',
                         message: '请将必填项完善后再提交',
                         dangerouslyUseHTMLString:true
                     });
-                    return false;
                 }
             })
         },
 
-        handleClose(){
+        cancel(){
             this.$refs.ruleForm.resetFields();
-            this.dialog.showflag = false;
             this.msgList.map(item=>{
                 item.value = '';
             });
+            for(let key in this.ruleForm){
+                this.dialogMsg.ruleForm[key] = '';
+            }
         },
 
-  }
+    }
 };
 </script>
 

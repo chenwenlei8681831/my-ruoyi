@@ -1,23 +1,23 @@
 <template>
         
-        <el-dialog class='dialog' :title="dialog.title?dialog.title:'温馨提示'" :visible.sync="dialog.showflag" :width="dialog.width" :show-close="false" >
-            <el-form class='flex row worp' :model="ruleForm" :rules="rules" ref="ruleForm" :label-position='dialog.position' size="small" label-width="100px" >
-                <el-form-item class='w_50' :prop="item.key" :label="item.title" :class='item.class' v-for="item in msgList" :key="item.key">
+        <el-dialog class='dialog' :title="dialogMsg.config.title?dialogMsg.config.title:'温馨提示'" :visible.sync="dialogMsg.config.show" :width="dialogMsg.config.width" :show-close="false" >
+            <el-form class='flex row worp' :model="dialogMsg.ruleForm" :rules="dialogMsg.rules" ref="ruleForm" :label-position='dialogMsg.config.position' size="small" label-width="100px" >
+                <el-form-item class='w_50' :prop="item.key" :label="item.title" :class='item.class' v-for="item in dialogMsg.list" :key="item.key">
                     <!-- 输入框 -->
                     <el-input
-                        :style="{width:dialog.itemWidth}"
+                        :style="{width:dialogMsg.config.itemWidth}"
                         v-if="item.type == 'text'"
                         size="mini"
-                        v-model="ruleForm[item.key]"
+                        v-model="dialogMsg.ruleForm[item.key]"
                         :placeholder="`请输入${item.title}`"
                         clearable>
                     </el-input>
                     <!-- 下拉框 -->
                     <el-select
-                        :style="{width:dialog.itemWidth}"
+                        :style="{width:dialogMsg.config.itemWidth}"
                         :remote="item.isRemote==1?true:false" 
                         :remote-method="item.isRemote==1?item.remoteMethod:''"
-                        v-if="item.type=='select'" v-model="ruleForm[item.key]" :placeholder="`请选择${item.title}`" size="mini" filterable clearable >
+                        v-if="item.type=='select'" v-model="dialogMsg.ruleForm[item.key]" :placeholder="`请选择${item.title}`" size="mini" filterable clearable >
                         <el-option
                             v-for="(op_item,op_index) in item.option"
                             :key="op_index"
@@ -27,9 +27,9 @@
                     </el-select>
                     <!-- 日期范围 -->
                     <el-date-picker
-                        :style="{width:dialog.itemWidth}"
+                        :style="{width:dialogMsg.config.itemWidth}"
                         v-if="item.type == 'dateDaterange'"
-                        v-model="ruleForm[item.key]"
+                        v-model="dialogMsg.ruleForm[item.key]"
                         value-format="yyyy-MM-dd"
                         type="daterange"
                         range-separator="-"
@@ -38,23 +38,35 @@
                     </el-date-picker>
                     <!-- 选择日期 -->
                     <el-date-picker
-                        :style="{width:dialog.itemWidth}"
+                        :style="{width:dialogMsg.config.itemWidth}"
                         v-if="item.type == 'date'"
-                        v-model="ruleForm[item.key]"
+                        v-model="dialogMsg.ruleForm[item.key]"
                         value-format="yyyy-MM-dd"
                         type="date"
                         :placeholder="`请选择${item.title}`">
                     </el-date-picker>
                     <!-- 单选框 -->
-                    <div :style="{width:dialog.itemWidth}" v-if="item.type=='radio'">
-                        <el-radio-group v-model="ruleForm[item.key]">
+                    <div :style="{width:dialogMsg.config.itemWidth}" v-if="item.type=='radio'">
+                        <el-radio-group v-model="dialogMsg.ruleForm[item.key]">
                             <el-radio v-for="(op_item,op_index) in item.option" :key="op_index" :label="op_item.id">{{op_item.title}}</el-radio>
-                        </el-radio-group>
+                        </el-radio-group>        
                     </div>
+                    <!-- 文本框 -->
+                    <el-input v-if="item.type == 'textarea'" 
+                              type="textarea"
+                              v-model="dialogMsg.ruleForm[item.key]"
+                              :placeholder="`请输入${item.title}`"
+                              show-word-limit
+                              :maxlength="item.maxlength ||100"
+                              :rows='item.item || 3'
+                              clearable>
+                    </el-input>
+                    <!-- 自定义插槽 -->
+                    <div v-if="item.type == 'slot'"> <slot :name="item.key"></slot> </div>
                 </el-form-item>
                 <div class="dialog-footer w_100 flex row j_center mar_t_30">
-                    <el-button type="primary" @click="ClickSubimt" :loading="loading">确定</el-button>
-                    <el-button @click="handleClose">取消</el-button>
+                    <el-button type="primary" @click="confirm" :loading="loading">确定</el-button>
+                    <el-button @click="cancel">取消</el-button>
                 </div>
             </el-form>
         </el-dialog>
@@ -62,68 +74,56 @@
 
 <script>
 export default {
-  props: {
-        dialog: {
-			type: Object,
-			default: {
-                width:'400px',
-                showflag:false,
-                title:'温馨提示'
-            },
-		},
-        ruleForm: {
-			type: Object,
-			default: () => {},
+    name: "",
+    props: {
+        dialogMsg:{
+            type: Object,
+            default: () => {},
         },
-        rules: {
-			type: Object,
-			default: () => {},
-		},
-		msgList: {
-			type: Array,
-			default: () => [],
-        },
-		
-  },
-  name: "",
-  data() {
-    return {
-        dialogVisible: false,
-        selectForm: {},
-        loading: false,
-        fileList: [],
-    };
-  },
-  methods: {
+        handleSubmit:{
+            type: Function,
+            default: () => {},
+        }
+    },
+    data() {
+        return {
+            dialogVisible: false,
+            selectForm: {},
+            loading: false,
+            fileList: [],
+        };
+    },
+    methods: {
     
-        ClickSubimt(){
+        confirm(){
             this.$refs.ruleForm.validate((valid) => {
                 if (valid) {
-                    //this.submit_from();
+                    this.handleSubmit();
                 } else {
                     this.$message({
                         type: 'warning',
                         message: '请将必填项完善后再提交',
                         dangerouslyUseHTMLString:true
                     });
-                    return false;
                 }
             })
         },
 
-        handleClose(){
+        cancel(){
             this.$refs.ruleForm.resetFields();
-            this.dialog.showflag = false;
-            this.msgList.map(item=>{
+            this.dialogMsg.config.show = false;
+            this.dialogMsg.list.map(item=>{
                 item.value = '';
             });
+            for(let key in this.dialogMsg.ruleForm){
+                this.dialogMsg.ruleForm[key] = '';
+            }
         },
 
-  },
-  mounted() {
-        //console.log(this.ruleForm);
-        //console.log(this.rules);
-  }
+    },
+    mounted() {
+        
+    }
 };
 </script>
 

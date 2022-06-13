@@ -98,7 +98,7 @@ export default {
           };
           this.$store.dispatch("Login", this.loginForm).then(() => {
               let path = this.$store.state.permission.firstPath;
-              console.log('this.$store',path);
+              // console.log('this.$store',path);
               this.$router.replace(path?path:'/');
               this.message('登录成功!');
             }).catch(() => {
