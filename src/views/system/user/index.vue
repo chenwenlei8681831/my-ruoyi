@@ -114,7 +114,7 @@ export default {
                     { type:'downall',title:'导出全部' },
                 ],
             },
-            //弹窗-master测试分支
+            //弹窗
             dialogMsg:{
                 config:{
                     show:false,
